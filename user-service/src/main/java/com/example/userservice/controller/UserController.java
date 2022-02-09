@@ -45,6 +45,6 @@ public class UserController {
         userService.createUser(userDto);
 
         return "Create user method is called";
-s   }
+   }
 
 }
