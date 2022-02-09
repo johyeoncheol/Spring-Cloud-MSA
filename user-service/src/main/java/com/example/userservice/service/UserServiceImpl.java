@@ -13,12 +13,8 @@ import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService{
-    UserRepository userRepository;
-
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    UserRepository userRepository;
 
     @Override
     public UserDto createUser(UserDto userDto) {
@@ -29,6 +25,9 @@ public class UserServiceImpl implements UserService{
         UserEntity userEntity = mapper.map(userDto,UserEntity.class);
         userEntity.setEncryptedPwd("encrypted_password");
         userRepository.save(userEntity);
-        return userDto;
+
+        UserDto returnUserDto = mapper.map(userEntity,UserDto.class);
+
+        return returnUserDto;
     }
 }
