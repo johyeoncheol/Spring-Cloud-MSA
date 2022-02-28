@@ -13,7 +13,7 @@ import javax.servlet.Filter;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurity extends WebSecurityConfigurerAdapter {
+public class    WebSecurity extends WebSecurityConfigurerAdapter {
     private UserService userService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private Environment env;
@@ -29,7 +29,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
-                                .hasIpAddress("172.27.144.73")
+                                .hasIpAddress("172.30.1.42")
                                 .and()
                                 .addFilter(getAuthenticationFilter());
 
